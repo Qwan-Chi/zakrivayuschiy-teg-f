@@ -146,7 +146,8 @@
 
 .button__save {
   max-width: 335px;
-  margin-block-end: 100px;
+  margin-block-start: 50px;
+  margin-block-end: 102px;
   font-size: var(--main-font-size-small);
   font-family: var(--secondary-font);
   background-color: #fff;
@@ -154,10 +155,45 @@
   flex-direction: column;
   padding: 15px 18px;
   align-items: center;
-  justify-content: center;
+  justify-self: center;
+  gap: 8px;
 }
 
 .floppy {
   width: 28px;
   height: 28px;
+}
+
+/* Фильтры */
+
+.sepia {
+  filter: sepia(100%);
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(90deg);
+}
+
+.saturate {
+  filter: saturate(8);
+}
+
+.brightness {
+  filter: brightness(0.25);
+}
+
+.contrast {
+  filter: contrast(200%);
+}
+
+.many-filters {
+  filter: sepia(100%) contrast(200%) blur(5px);
 }
