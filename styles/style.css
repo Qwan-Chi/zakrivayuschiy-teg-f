@@ -21,6 +21,9 @@
   background: var(--background-page);
   background-attachment: fixed;
   background-size: cover;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .header {
@@ -196,4 +199,19 @@
 
 .many-filters {
   filter: sepia(100%) contrast(200%) blur(5px);
+}
+
+@media (width > 900px) {
+  .header {
+    padding: 128px 14px;
+  }
+
+  .button__save {
+    flex-direction: row;
+  }
+
+  .floppy {
+    width: 21px;
+    height: 21px;
+  }
 }
