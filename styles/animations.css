@@ -9,3 +9,122 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+
+*/
+
+.like-icon .core,
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s ease;
+}
+
+.like-icon .contour {
+  fill: var(--contour);
+  transition: fill 0.3s ease;
+}
+
+.like-icon .sparks {
+  fill: var(--red-fill);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.like-icon:hover .core {
+  fill: var(--contour);
+  transition-delay: 0s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour);
+  transition-delay: 0.05s;
+}
+
+.like-icon:not(:hover) .core {
+  fill: transparent;
+  transition-delay: 0.03s;
+}
+
+.like-icon:not(:hover) .main-body {
+  fill: transparent;
+  transition-delay: 0s;
+}
+
+.like-icon:active .core,
+.like-icon:active .main-body {
+  fill: var(--red-fill);
+  transition: fill 0.3s ease;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--red-fill);
+  transition: fill 0.3s ease 0s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--red-fill);
+  transition: fill 0.3s ease 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--red-fill);
+  transition: fill 0.3s ease 0.06s;
+}
+
+.like-icon:not(.is-liked) .contour {
+  fill: var(--contour);
+  transition: fill 0.1s linear;
+}
+
+.like-icon.is-liked .heart {
+  transform-origin: center center;
+  animation: scale-up 0.3s ease-in forwards;
+  animation-delay: 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: spark 0.3s ease-in forwards;
+  animation-delay: 0.3s;
+}
+
+.card__icon-button:focus-visible {
+  box-sizing: border-box;
+  outline: 2px solid black;
+  transition: outline 0.3s ease;
+}
+
+@keyframes spark {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(1);
+  }
+
+  85% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
