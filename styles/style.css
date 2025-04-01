@@ -1,21 +1,12 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
+/* =========================================
+   Общие стили страницы и базовая верстка
+   ========================================= */
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--main-font);
   font-size: var(--main-font-size);
-  font-variation-settings: var(--main-font-weight-normal);
+  font-variation-settings: "wght" var(--main-font-weight-normal);
   line-height: var(--line-height-main-font);
   color: var(--text-color);
   background: var(--background-page);
@@ -70,7 +61,7 @@
 }
 
 .card__title {
-  font-weight: var(--main-font-weight-bold);
+  font-variation-settings: "wght" var(--main-font-weight-bold);
   margin: 4px 10px 6px;
   font-size: var(--main-font-size);
 }
@@ -102,7 +93,7 @@
 }
 
 @supports (-webkit-text-stroke: 1px white) {
-  .img-span {
+  .lable {
     -webkit-text-stroke: 1px white;
     text-shadow: none;
   }
@@ -123,56 +114,68 @@
   margin-inline-end: 25px;
 }
 
-.card__like-button {
+/* =========================================
+     Изменения: Объединение стилей для кнопок
+     ========================================= */
+
+/* Новый базовый класс для всех кнопок */
+.button {
   border: 2px solid #000;
   background-color: #fff;
-  width: 130px;
-  height: 38px;
+  /* height: 38px; */
   position: relative;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; /* Общие внутренние отступы */
 }
 
-.card__like-button:focus-visible {
+.button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 currentColor;
-  transition: box-shadow 0.3s ease;
 }
 
-.card__like-button::before,
-.button__save::before {
+/* Общая анимация псевдоэлемента для всех кнопок */
+.button::before {
+  content: "";
   position: absolute;
-  background: #000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background: #000;
   transform: translateX(-100%);
   transition: transform 0.5s ease-in-out;
-  content: "";
 }
 
-.card__like-button:hover::before,
-.button__save:hover::before {
+.button:hover::before {
   transform: translateX(0);
 }
 
-.button__text {
+/* Общий стиль для текстового содержимого кнопок */
+.button .button__text {
   position: relative;
   font-family: var(--secondary-font);
   font-size: var(--main-font-size-small);
-  justify-self: center;
-  align-self: center;
-}
-
-.button__text,
-.floppy,
-.button__save-text {
-  position: relative;
   mix-blend-mode: difference;
   filter: invert(1);
-  transition: filter 0.5s ease-in-out;
+  z-index: 1;
 }
 
+/* Изменения для конкретных кнопок */
+
+/* Кнопка "Like" */
+/* Раньше у .card__like-button были повторяющиеся стили,
+     теперь достаточно применять базовый класс .button и добавлять специфичные свойства */
+.card__like-button {
+  /* Используйте классы button и card__like-button вместе в HTML */
+  width: 130px; /* Специфичное для Like */
+}
+
+/* Кнопка с иконкой (например, сердечко) */
+/* Стили остались почти без изменений, так как для кнопок с иконками нужна своя настройка */
 .card__icon-button {
   height: 38px;
   background: none;
@@ -181,29 +184,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: border 0.3s ease;
 }
 
 .card__icon-button:focus-visible {
   outline: none;
-  border: 2px solid #000;
-  transition: border 0.3s ease;
+  border: 1px solid #000;
 }
 
+/* Кнопка "Сохранить на память" */
+/* Аналогично, здесь повторяющиеся свойства вынесены в базовый класс .button,
+     а специфичные свойства оставлены */
 .button__save {
+  /* Используйте классы button и button__save вместе в HTML */
   max-width: 335px;
   margin-block-start: 50px;
   margin-block-end: 102px;
   font-size: var(--main-font-size-small);
   font-family: var(--secondary-font);
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   padding: 15px 18px;
   align-items: center;
-  justify-self: center;
   gap: 8px;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  margin-inline: auto;
 }
 
 .button__save:focus-visible {
@@ -211,13 +218,36 @@
   box-shadow: 2px 2px 0 currentColor;
 }
 
+/* Псевдоэлемент для .button__save (анимация аналогична базовой кнопке) */
+.button__save::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button__save:hover::before {
+  transform: translateX(0);
+}
+
+/* Стили для элементов иконок внутри кнопок (например, floppy) */
 .floppy {
   width: 28px;
   height: 28px;
+  filter: invert(1);
+  mix-blend-mode: difference;
 }
 
+/* =========================================
+     Стили диалоговых окон и прочие элементы
+     ========================================= */
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 dialog {
@@ -257,7 +287,6 @@ dialog h3 {
 }
 
 /* Фильтры */
-
 .sepia {
   filter: sepia(100%);
 }
@@ -290,8 +319,9 @@ dialog h3 {
   filter: sepia(100%) contrast(200%) blur(5px);
 }
 
-/* Адаптивные стили */
-
+/* =========================================
+     Адаптивные стили
+     ========================================= */
 @media (width > 900px) {
   .header {
     padding: 128px 14px;
@@ -312,5 +342,9 @@ dialog h3 {
 
   .dialog h3 {
     margin-inline-end: 20px;
+  }
+
+  .lable {
+    right: 25px;
   }
 }
