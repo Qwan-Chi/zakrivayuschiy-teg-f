@@ -1,1 +1,1 @@
-https://qwan-chi.github.io/zakrivayuschiy-teg-f/
+https://github.com/Qwan-Chi/zakrivayuschiy-teg-f
