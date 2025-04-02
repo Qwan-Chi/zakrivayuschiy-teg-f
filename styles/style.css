@@ -1,6 +1,3 @@
-/* =========================================
-   Общие стили страницы и базовая верстка
-   ========================================= */
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -114,22 +111,18 @@
   margin-inline-end: 25px;
 }
 
-/* =========================================
-     Изменения: Объединение стилей для кнопок
-     ========================================= */
+/* Изменения: Объединение стилей для кнопок */
 
-/* Новый базовый класс для всех кнопок */
 .button {
   border: 2px solid #000;
   background-color: #fff;
-  /* height: 38px; */
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 10px; /* Общие внутренние отступы */
+  padding: 0 10px;
 }
 
 .button:focus-visible {
@@ -137,7 +130,6 @@
   box-shadow: 2px 2px 0 currentColor;
 }
 
-/* Общая анимация псевдоэлемента для всех кнопок */
 .button::before {
   content: "";
   position: absolute;
@@ -154,7 +146,6 @@
   transform: translateX(0);
 }
 
-/* Общий стиль для текстового содержимого кнопок */
 .button .button__text {
   position: relative;
   font-family: var(--secondary-font);
@@ -164,18 +155,10 @@
   z-index: 1;
 }
 
-/* Изменения для конкретных кнопок */
-
-/* Кнопка "Like" */
-/* Раньше у .card__like-button были повторяющиеся стили,
-     теперь достаточно применять базовый класс .button и добавлять специфичные свойства */
 .card__like-button {
-  /* Используйте классы button и card__like-button вместе в HTML */
-  width: 130px; /* Специфичное для Like */
+  width: 130px;
 }
 
-/* Кнопка с иконкой (например, сердечко) */
-/* Стили остались почти без изменений, так как для кнопок с иконками нужна своя настройка */
 .card__icon-button {
   height: 38px;
   background: none;
@@ -192,11 +175,7 @@
   border: 1px solid #000;
 }
 
-/* Кнопка "Сохранить на память" */
-/* Аналогично, здесь повторяющиеся свойства вынесены в базовый класс .button,
-     а специфичные свойства оставлены */
 .button__save {
-  /* Используйте классы button и button__save вместе в HTML */
   max-width: 335px;
   margin-block-start: 50px;
   margin-block-end: 102px;
@@ -218,7 +197,6 @@
   box-shadow: 2px 2px 0 currentColor;
 }
 
-/* Псевдоэлемент для .button__save (анимация аналогична базовой кнопке) */
 .button__save::before {
   content: "";
   position: absolute;
@@ -235,7 +213,6 @@
   transform: translateX(0);
 }
 
-/* Стили для элементов иконок внутри кнопок (например, floppy) */
 .floppy {
   width: 28px;
   height: 28px;
@@ -243,9 +220,7 @@
   mix-blend-mode: difference;
 }
 
-/* =========================================
-     Стили диалоговых окон и прочие элементы
-     ========================================= */
+/* Стили диалоговых окон и прочие элементы */
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }
@@ -319,9 +294,7 @@ dialog h3 {
   filter: sepia(100%) contrast(200%) blur(5px);
 }
 
-/* =========================================
-     Адаптивные стили
-     ========================================= */
+/* Адаптивные стили */
 @media (width > 900px) {
   .header {
     padding: 128px 14px;
