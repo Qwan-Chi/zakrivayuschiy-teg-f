@@ -123,6 +123,8 @@
   align-items: center;
   justify-content: center;
   padding: 0 10px;
+  font-size: var(--main-font-size-small);
+  font-family: var(--secondary-font);
 }
 
 .button:focus-visible {
@@ -162,12 +164,12 @@
 .card__icon-button {
   height: 38px;
   background: none;
-  border: none;
+  border: 2px solid rgba(0, 0, 0, 0);
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .card__icon-button:focus-visible {
@@ -179,38 +181,11 @@
   max-width: 335px;
   margin-block-start: 50px;
   margin-block-end: 102px;
-  font-size: var(--main-font-size-small);
-  font-family: var(--secondary-font);
   display: flex;
   flex-direction: column;
   padding: 15px 18px;
-  align-items: center;
   gap: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
   margin-inline: auto;
-}
-
-.button__save:focus-visible {
-  outline: none;
-  box-shadow: 2px 2px 0 currentColor;
-}
-
-.button__save::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  transform: translateX(-100%);
-  transition: transform 0.5s ease-in-out;
-}
-
-.button__save:hover::before {
-  transform: translateX(0);
 }
 
 .floppy {
